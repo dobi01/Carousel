@@ -25,7 +25,7 @@ $(function(){
 		setDefaultInterval();
 	});
 
-	$(".fa-angle-left").click(function(){
+	$(".fa-angle-left").click(function() {
 		clearInterval(interval);
 		moveLastSlide();
 		carouselList.animate({'marginLeft':0}, 500, setDefaultInterval);
@@ -37,6 +37,10 @@ $(function(){
 		firstItem.before(lastItem);
     carouselList.css({marginLeft:-1000});
   };
-});
 
 // CIRCLES
+	// function changeOnCircles() {
+  //
+	// };
+
+});

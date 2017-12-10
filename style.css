@@ -23,10 +23,7 @@ li {
   float: left;
 }
 
-/*button {
-  position: relative;
-  border: 1px solid red;
-}*/
+/* ARROWS */
 
 .fa {
   color: #aaa;
@@ -41,4 +38,30 @@ li {
 
 .fa-angle-left {
   left: 10px;
+}
+
+/* CIRCLES */
+
+.circles {
+  position: relative;
+}
+
+.circle {
+  height: 10px;
+  width: 10px;
+  border: .5px solid #aaa;
+  position: absolute;
+  border-radius: 50%;
+  bottom: 50px;
+  left: 47vw;
+  cursor: pointer;
+}
+
+.circle-2 {left: 48vw;}
+.circle-3 {left: 49vw;}
+.circle-4 {left: 50vw;}
+.circle-5 {left: 51vw;}
+
+.circle:hover {
+  background-color: #aaa;
 }
