@@ -1,1 +1,2 @@
-# Zadanie-10.3
+# Carousel
+https://dobi01.github.io/Carousel/
