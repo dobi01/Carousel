@@ -1,46 +1,65 @@
-$(function(){
-	var carouselList = $("#carousel ul");
-  var interval;
-	function setDefaultInterval() {
-		interval = setInterval(changeSlide, 3000);
+$(function() {
+	var carouselList = $('#carousel ul'),
+			circles = $('.circles'),
+  		interval,
+			currentSlide = 0,
+			slidesCount = 4;
+
+	function moveRight() {
+		if (currentSlide < slidesCount) {
+			currentSlide++;
+		} else {
+			currentSlide = 0;
+		}
+		showSlide(currentSlide);
 	}
 
-	setDefaultInterval();
+	function moveLeft() {
+		if (currentSlide === 0) {
+			currentSlide = slidesCount;
+		} else {
+			currentSlide--;
+		}
+		showSlide(currentSlide);
+	}
 
-  function changeSlide() {
-    carouselList.animate({'marginLeft':-1000}, 500, moveFirstSlide);
-  };
+	function setActiveCircle(index) {
+		circles.find('.active').removeClass('.active');
+		circles.find('span').eq(index).addClass('.active');
+	}
 
-  function moveFirstSlide() {
-    var firstItem = carouselList.find("li:first");
-    var lastItem = carouselList.find("li:last");
-    lastItem.after(firstItem);
-    carouselList.css({marginLeft:0});
-  };
+	function showSlide(index) {
+		setActiveCircle(index);
+		carouselList.animate({'marginLeft': -1000 * index}, 600);
+	}
 
-// ARROWS
-	$(".fa-angle-right").click(function() {
+	function setDefaultInterval() {
+		interval = setInterval(moveRight, 3000);
+	}
+
+	function resetInterval() {
 		clearInterval(interval);
-		changeSlide();
 		setDefaultInterval();
+	}
+
+	// ARROWS
+	$('.fa-angle-right').click(function() {
+		moveRight();
+		resetInterval();
 	});
 
-	$(".fa-angle-left").click(function() {
-		clearInterval(interval);
-		moveLastSlide();
-		carouselList.animate({'marginLeft':0}, 500, setDefaultInterval);
+	$('.fa-angle-left').click(function() {
+		moveLeft();
+		resetInterval();
 	});
 
-	function moveLastSlide() {
-		var firstItem = carouselList.find("li:first");
-		var lastItem = carouselList.find("li:last");
-		firstItem.before(lastItem);
-    carouselList.css({marginLeft:-1000});
-  };
+	// CIRCLES
+	circles.on('click', 'span', function() {
+		currentSlide = $(this).index();
+		showSlide(currentSlide);
+		resetInterval();
+	});
 
-// CIRCLES
-	// function changeOnCircles() {
-  //
-	// };
+	setDefaultInterval();
 
 });

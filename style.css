@@ -19,7 +19,6 @@ ul {
 
 li {
   width: 1000px;
-  height: 550px;
   float: left;
 }
 
@@ -46,7 +45,7 @@ li {
   position: relative;
 }
 
-.circle {
+span {
   height: 10px;
   width: 10px;
   border: .5px solid #aaa;
@@ -57,11 +56,11 @@ li {
   cursor: pointer;
 }
 
-.circle-2 {left: 48vw;}
-.circle-3 {left: 49vw;}
-.circle-4 {left: 50vw;}
-.circle-5 {left: 51vw;}
+span:nth-of-type(1) {left: 48vw;}
+span:nth-of-type(2) {left: 49vw;}
+span:nth-of-type(3) {left: 50vw;}
+span:nth-of-type(4) {left: 51vw;}
 
-.circle:hover {
+span:hover {
   background-color: #aaa;
 }
