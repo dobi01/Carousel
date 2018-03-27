@@ -1,65 +1,50 @@
 $(function() {
 	var carouselList = $('#carousel ul'),
-			circles = $('.circles'),
-  		interval,
-			currentSlide = 0,
-			slidesCount = 4;
+			// circle = $('.circles span'),
+			interval = setInterval(changeSlide, 3000);
 
-	function moveRight() {
-		if (currentSlide < slidesCount) {
-			currentSlide++;
-		} else {
-			currentSlide = 0;
-		}
-		showSlide(currentSlide);
+	function changeSlide() {
+		// changeCircle();
+		carouselList.animate({'marginLeft': -1000}, 500, moveFirstSlide);
 	}
 
-	function moveLeft() {
-		if (currentSlide === 0) {
-			currentSlide = slidesCount;
-		} else {
-			currentSlide--;
-		}
-		showSlide(currentSlide);
+
+	function moveFirstSlide() {
+		var firstItem = carouselList.find('li:first'),
+				lastItem = carouselList.find('li:last');
+
+		lastItem.after(firstItem);
+		carouselList.css({marginLeft: 0});
+		// changeCircle();
 	}
 
-	function setActiveCircle(index) {
-		circles.find('.active').removeClass('.active');
-		circles.find('span').eq(index).addClass('.active');
-	}
+	// ARROWS TO CHANGE SLIDES
+	$('.fa-angle-right').click(changeSlide);
 
-	function showSlide(index) {
-		setActiveCircle(index);
-		carouselList.animate({'marginLeft': -1000 * index}, 600);
-	}
+	$('.fa-angle-left').click(function () {
+		var firstItem = carouselList.find('li:first'),
+				lastItem = carouselList.find('li:last');
 
-	function setDefaultInterval() {
-		interval = setInterval(moveRight, 3000);
-	}
-
-	function resetInterval() {
-		clearInterval(interval);
-		setDefaultInterval();
-	}
-
-	// ARROWS
-	$('.fa-angle-right').click(function() {
-		moveRight();
-		resetInterval();
+		firstItem.before(lastItem);
+		carouselList.css({marginLeft: -1000});
+		// changeCircle();
+		carouselList.animate({'marginLeft': 0}, 500);
 	});
 
-	$('.fa-angle-left').click(function() {
-		moveLeft();
-		resetInterval();
-	});
+	// // CIRCLES FOR CHANGE SLIDES
+	// function changeCircle() {
+	// 	var currentSlide = carouselList.find('li:first'),
+	// 			currentSlideIndex = currentSlide.data('data-tmp');
 
-	// CIRCLES
-	circles.on('click', 'span', function() {
-		currentSlide = $(this).index();
-		showSlide(currentSlide);
-		resetInterval();
-	});
-
-	setDefaultInterval();
+	// 	circle.each(function(index) {
+	// 		if (index == currentSlideIndex) {
+	// 			$(this).addClass('active');
+	// 			console.log('success');
+	// 		} else {
+	// 			$(this).removeClass('active');
+	// 			console.log('err');
+	// 		}
+	// 	});
+	// }
 
 });
