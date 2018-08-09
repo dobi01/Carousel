@@ -1,2 +1,4 @@
 # Carousel
-https://dobi01.github.io/Carousel/
+Kodilla web developer bootcamp
+
+Task 10.3 - first jQuery use to build a carousel of images

@@ -23,9 +23,8 @@ li {
 }
 
 /* ARROWS */
-
 .fa {
-  color: #aaa;
+  color: rgba(0, 0, 0, 0.616);
   position: absolute;
   top: 240px;
   cursor: pointer;
@@ -40,31 +39,27 @@ li {
 }
 
 /* CIRCLES */
-
 .circles {
-  position: relative;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 span {
   height: 10px;
   width: 10px;
-  border: .5px solid #aaa;
-  position: absolute;
+  border: .5px solid rgba(0, 0, 0, 0.616);
   border-radius: 50%;
-  bottom: 50px;
-  left: 47vw;
   cursor: pointer;
+  padding: 5px;
+  display: inline-block;
 }
 
 .active {
-  background-color: #aaa;
+  background-color: rgba(0, 0, 0, 0.616);
 }
 
-span:nth-of-type(1) {left: 48vw;}
-span:nth-of-type(2) {left: 49vw;}
-span:nth-of-type(3) {left: 50vw;}
-span:nth-of-type(4) {left: 51vw;}
-
 span:hover {
-  background-color: #aaa;
+  background-color: rgba(0, 0, 0, 0.616);
 }
